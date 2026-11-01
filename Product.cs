@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Midterm_Product
+namespace Mid_Project
 {
     internal class Product
     {
@@ -17,7 +17,7 @@ namespace Midterm_Product
         public string CategoryId;
         public DateTime CreateAt;
         public string CreateBy;
-        public DateTime UpdateDate;
+        public DateTime UpdateAt;
         public string UpdateBy;
         public int i;
 
@@ -119,8 +119,7 @@ namespace Midterm_Product
             }
             Console.WriteLine("-----------------------------------------");
         }
-
-        //Update Option
+            //Update Option
         public void UpdateProductInfor()
         {
             Console.WriteLine("__________Update Product Information-----------");
@@ -207,19 +206,10 @@ namespace Midterm_Product
                         product[i].CreateBy = this.CreateBy;
                     }
                     Console.Write($"Update At:{DateTime.Now}");
+                    UpdateAt = DateTime.Parse(Console.ReadKey().ToString());
                     Console.WriteLine();
                     Console.Write("Update By:");
-                    CreateBy = Console.ReadLine();
-
-
-
-
-
-
-
-
-
-
+                    UpdateBy = Console.ReadLine();
                     Console.WriteLine("Product Information is Updated");
                 }
                 else
@@ -238,7 +228,6 @@ namespace Midterm_Product
             Console.Write("Search ID to Delete: ");
             int SearchId = int.Parse(Console.ReadLine());
             bool check = false;
-
             for (i = 0; i < product.Count; i++)
             {
                 if (product[i].Id == SearchId)
@@ -296,7 +285,7 @@ namespace Midterm_Product
             Console.WriteLine("-----------------------------------------------");
         }
 
-        public void ProductInfor()
+        public void MenuItem()
         {
         Start:
             Console.WriteLine("----------Product Management ---------");
@@ -335,3 +324,4 @@ namespace Midterm_Product
         }
     }
 }
+

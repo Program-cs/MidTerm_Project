@@ -13,11 +13,10 @@ namespace Mid_Project
         public string CreateDate;
         public string CreateBy;
         public string Status;
-        public static string UpdateDate;
-        public static string UpdateBy;
-        public static int UpdateId;
-        public static List<Role> Roles = new List<Role>();
-        static void Main(string[] args)
+        public string UpdateBy;
+        public string UpdateAt;
+        public List<Role> Roles = new List<Role>();
+        public void MenuItem()
         {
         start:
             Console.WriteLine("--------------------Role Management-------------------------");
@@ -52,17 +51,15 @@ namespace Mid_Project
                     SearchRole();
                     break;
                 case 6:
-                    Back();
-                    break;
+                    return;
             }
             goto start;
-
         }
-        public static void AddRole()
+        public void AddRole()
         {
             Console.WriteLine("----------------1.Add Role-------------------");
-            Role s = new Role();
         add:
+            Role s = new Role();
             Console.Write("Id:");
             s.Id = int.Parse(Console.ReadLine());
             if (s.Id != Roles.Count)
@@ -82,7 +79,7 @@ namespace Mid_Project
                 goto add;
             }
         }
-        public static void ShowRole()
+        public void ShowRole()
         {
             for (int i = 0; i < Roles.Count; i++)
             {
@@ -92,44 +89,18 @@ namespace Mid_Project
                 Console.WriteLine($"Status:{Roles[i].Status}");
                 Console.WriteLine($"Create By:{Roles[i].CreateBy}");
                 Console.WriteLine($"Create Date:{Roles[i].CreateDate}");
+                if (Roles[i].UpdateAt != "")
+                {
+                    Console.WriteLine($"Update By: {Roles[i].UpdateBy}");
+                    Console.WriteLine($"Update At: {Roles[i].UpdateAt}");
+                }
             }
 
+
         }
-        public static void UpdateRole()
+        public void UpdateRole()
         {
             Console.WriteLine("--------------------------2.Update Role-----------------------");
-            if (Roles.Count == 0)
-            {
-                Console.WriteLine("Role not found!");
-            }
-            for (int i = 0; i < Roles.Count; i++)
-            {
-                Console.Write("Search by Id:");
-
-                UpdateId = int.Parse(Console.ReadLine());
-                Console.WriteLine("------------------------------------------");
-                bool Ischeacked = false;
-                if (Roles[i].Id == UpdateId)
-                {
-                    Ischeacked = true;
-                    Console.WriteLine("Name:");
-                    Roles[i].Name = Console.ReadLine();
-                    Console.WriteLine("Update By");
-                    Roles[i].CreateBy = Console.ReadLine();
-
-                    UpdateDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    break;
-                }
-                if (!Ischeacked)
-                {
-                    Console.WriteLine("Not found Id!");
-                }
-
-            }
-        }
-        public static void DeleteRole()
-        {
-            Console.WriteLine("-----------------3.Delete Role------------------");
             if (Roles.Count == 0)
             {
                 Console.WriteLine("Role not found!");
@@ -143,6 +114,36 @@ namespace Mid_Project
                 if (Roles[i].Id == UpdateId)
                 {
                     Ischeacked = true;
+                    Console.Write("Name:");
+                    Roles[i].Name = Console.ReadLine();
+                    Console.Write("Update By:");
+                    Roles[i].UpdateBy = Console.ReadLine();
+                    Roles[i].UpdateAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    break;
+                }
+                if (!Ischeacked)
+                {
+                    Console.WriteLine("Not found Id!");
+                }
+
+            }
+        }
+        public void DeleteRole()
+        {
+            Console.WriteLine("-----------------3.Delete Role------------------");
+            if (Roles.Count == 0)
+            {
+                Console.WriteLine("Role not found!");
+            }
+            for (int i = 0; i < Roles.Count; i++)
+            {
+                Console.Write("Search by Id:");
+                int DeleteId;
+                DeleteId = int.Parse(Console.ReadLine());
+                bool Ischeacked = false;
+                if (Roles[i].Id == DeleteId)
+                {
+                    Ischeacked = true;
                     Roles.RemoveAt(i);
                     Console.WriteLine("Role remove successfuly!");
                     break;
@@ -154,7 +155,7 @@ namespace Mid_Project
 
             }
         }
-        public static void SearchRole()
+        public void SearchRole()
         {
             Console.WriteLine("-------------5.Search Role-----------------");
             if (Roles.Count == 0)
@@ -166,25 +167,25 @@ namespace Mid_Project
                 Console.Write("Search by Id:");
                 int SearchId;
                 SearchId = int.Parse(Console.ReadLine());
+                bool Ischeacked = false;
                 if (Roles[i].Id == SearchId)
                 {
 
                     Console.WriteLine($"Id:{Roles[i].Id}");
-                    Console.WriteLine($"User Name:{Roles[i].Name}");
+                    Console.WriteLine($"Name:{Roles[i].Name}");
                     Console.WriteLine($"Status:{Roles[i].Status}");
                     Console.WriteLine($"Create By:{Roles[i].CreateBy}");
                     Console.WriteLine($"Create Date:{Roles[i].CreateDate}");
                     break;
                 }
-                else
+                if (!Ischeacked)
                 {
                     Console.WriteLine("Not found Id!");
                 }
             }
         }
-        public static void Back()
-        {
-            Environment.Exit(0);
-        }
+       
+
     }
 }
+

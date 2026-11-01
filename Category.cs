@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Midt
+namespace Mid_Project
 {
     internal class Category
     {
@@ -248,7 +248,7 @@ namespace Midt
         }
 
         // Category Menu
-        public void CategoryInfor()
+        public void MenuItem()
         {
         Start:
             Console.WriteLine("---------- Category Management ----------");

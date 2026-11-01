@@ -289,7 +289,7 @@ namespace Mid_Project
         }
 
         // User Menu
-        public void UserInfor()
+        public void MenuItem()
         {
         Start:
             Console.WriteLine("---------- User Management ----------");

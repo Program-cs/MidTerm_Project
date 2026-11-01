@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Add_Stock;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +12,14 @@ namespace Mid_Project
     {
         static void Main(string[] args)
         {
+           
             List<LoginUser> users = new List<LoginUser>
 
             { new LoginUser("Admin", "admin123"),
               new LoginUser("Vatta", "vatta123")
             };
 
+        again:
             Console.WriteLine("————————Log In System———————-");
             Console.Write("User Name : ");
             string username = Console.ReadLine();
@@ -43,8 +47,13 @@ namespace Mid_Project
             else
             {
                 Console.WriteLine("\nInvalid Username or Password.");
+                goto again;
             }
         }
+        
+
+        
+       
 
         static void ShowMainMenu(string currentUser)
         {
@@ -60,7 +69,9 @@ namespace Mid_Project
                     Console.WriteLine("3. Product Management");
                     Console.WriteLine("4. Category Management");
                     Console.WriteLine("5. Supplier Management");
-                    Console.WriteLine("6. Exit");
+                    Console.WriteLine("6. Add Stock Management");
+                    Console.WriteLine("7. Customer Management");
+                    Console.WriteLine("8. Exit");
                     Console.WriteLine("—————————————————————");
                     Console.Write("Please choose option: ");
 
@@ -73,7 +84,9 @@ namespace Mid_Project
                     Console.WriteLine("1. Product Management");
                     Console.WriteLine("2. Category Management");
                     Console.WriteLine("3. Supplier Management");
-                    Console.WriteLine("4. Exit");
+                    Console.WriteLine("4. Add Stock Management");
+                    Console.WriteLine("5. Customer Management");
+                    Console.WriteLine("6. Exit");
                     Console.WriteLine("—————————————————————");
                     Console.Write("Please choose option: ");
 
@@ -83,28 +96,39 @@ namespace Mid_Project
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("\n[User Management module]\n");
+                        User user = new User();
+                        user.MenuItem();
                         break;
                     case 2:
-                        Console.WriteLine("\n[Role Management module]\n");
+                        Role role = new Role();
+                        role.MenuItem();
                         break;
                     case 3:
-                        Console.WriteLine("\n[Product Management module]\n");
+                        Product product = new Product();
+                        product.MenuItem();
                         break;
                     case 4:
-                        Console.WriteLine("\n[Category Management module]\n");
+                        Category category = new Category();
+                        category.MenuItem();
                         break;
                     case 5:
-                        Console.WriteLine("\n[Supplier Management module]\n");
+                        Supplier supplierManager = new Supplier();
+                        supplierManager.MenuItem();
                         break;
                     case 6:
-                        Console.WriteLine("\nExiting POS System. Goodbye!");
+                        AddStock addStock = new AddStock();
+                        addStock.MenuItem();
+                        break;
+
+                    case 7:
+                        Customer customer = new Customer();
+                        customer.MenuItem();
                         break;
                     default:
-                        Console.WriteLine("\nInvalid option! Please try again.\n");
+                        Environment.Exit(0);
                         break;
                 }
-            } while (option != 6);
+            } while (option != 9);
         }
 
 
