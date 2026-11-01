@@ -111,7 +111,7 @@ namespace Mid_Project
                 Console.WriteLine($"ID: {user[i].Id}");
                 Console.WriteLine($"User Name: {user[i].UserName}");
                 Console.WriteLine($"Gender: {user[i].Gender}");
-                Console.WriteLine($"Password: {new string('*', user[i].Password.Length)}");
+                Console.WriteLine($"Password: {user[i].Password}");
                 Console.WriteLine($"Email: {user[i].Email}");
                 Console.WriteLine($"Status: {user[i].Status}");
                 Console.WriteLine($"Create At: {user[i].CreateAt}");
@@ -268,7 +268,7 @@ namespace Mid_Project
                     Console.WriteLine($"ID: {user[i].Id}");
                     Console.WriteLine($"User Name: {user[i].UserName}");
                     Console.WriteLine($"Gender: {user[i].Gender}");
-                    Console.WriteLine($"Password: {new string('*', user[i].Password.Length)}");
+                    Console.WriteLine($"Password: {user[i].Password}");
                     Console.WriteLine($"Email: {user[i].Email}");
                     Console.WriteLine($"Status: {user[i].Status}");
                     Console.WriteLine($"Create At: {user[i].CreateAt}");
